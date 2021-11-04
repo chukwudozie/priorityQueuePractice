@@ -5,7 +5,6 @@ public class Book {
     private String bookTitle;
     private  String bookAuthor;
     private int numberOfBooks;
-    private boolean isAvailable;
 
     public Book(String bookTitle, String bookAuthor, int numberOfBooks) {
         this.bookTitle = bookTitle;
@@ -45,11 +44,5 @@ public class Book {
         this.numberOfBooks = numberOfBooks;
     }
 
-    public boolean isAvailable() {
-        return isAvailable;
-    }
 
-    public void setAvailable(boolean available) {
-        isAvailable = available;
-    }
 }

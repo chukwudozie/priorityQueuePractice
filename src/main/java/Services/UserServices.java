@@ -7,7 +7,7 @@ import Model.Person;
 public interface UserServices {
 
 
-    public String requestForBook(Book book) throws LibraryException;
+    String requestForBook(Book book) throws LibraryException;
 //    public String borrowBook(Book book, Person user);
 
 

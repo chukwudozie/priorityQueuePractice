@@ -7,6 +7,7 @@ import ServiceImplementation.User;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class App {
@@ -25,58 +26,56 @@ public class App {
         Book book3 = new Book("Chemistry","Ababio",2);
         Book book4 = new Book("Physics","Nelkon and Parker",3);
 
-
-
 //        Populate the School Library with books to be borrowed
         System.out.println(librarian.addBookToLibrary(book1));
         System.out.println(librarian.addBookToLibrary(book2));
         System.out.println(librarian.addBookToLibrary(book3));
         System.out.println(librarian.addBookToLibrary(book4)+"\n");
 
-        System.out.println(seniorStudent1.requestForBook(book1));
+//        System.out.println(seniorStudent1.requestForBook(book1));
 
 
-//        PriorityQueue<Person> priorityQueue = new PriorityQueue();
-//        priorityQueue.add(seniorStudent1);
-//        priorityQueue.add(juniorStudent1);
-//        priorityQueue.add(teacher);
-//        priorityQueue.add(juniorStudent2);
-//
-//        Iterator<Person> iterator = priorityQueue.iterator();
-//        while(iterator.hasNext()){
-////            System.out.println(priorityQueue.poll());
-//          try{
-//          //            System.out.println(librarian.lendBookToUser(priorityQueue.poll(), book1,1));
-//          } catch (BookNotAvailableException e){
-//                System.err.println("Book not available");
-//            }
-//        }
+        PriorityQueue<Person> priorityQueue = new PriorityQueue();
+        priorityQueue.add(seniorStudent1);
+        priorityQueue.add(juniorStudent1);
+        priorityQueue.add(teacher);
+        priorityQueue.add(juniorStudent2);
 
-        Queue<Person> personQueue = new LinkedList<>();
-
-        personQueue.add(seniorStudent1);
-        personQueue.add(juniorStudent1);
-        personQueue.add(teacher);
-        personQueue.add(juniorStudent2);
-
-
-        Iterator<Person> iterator2 = personQueue.iterator();
-        while(iterator2.hasNext()){
+        Iterator<Person> iterator = priorityQueue.iterator();
+        while(iterator.hasNext()){
 //            System.out.println(priorityQueue.poll());
-
-            try {
-                System.out.println(librarian.lendBookToUser(personQueue.poll(), book1,2));
-
-            } catch (LibraryException e){
+          try{
+                      System.out.println(librarian.lendBookToUser(priorityQueue.poll(), book1,0));
+          } catch (LibraryException e){
                 System.err.println("Book not available");
             }
         }
+
+//        Queue<Person> personQueue = new LinkedList<>();
+//
+//        personQueue.add(seniorStudent1);
+//        personQueue.add(juniorStudent1);
+//        personQueue.add(teacher);
+//        personQueue.add(juniorStudent2);
+//
+//
+//        Iterator<Person> iterator2 = personQueue.iterator();
+//        while(iterator2.hasNext()){
+////            System.out.println(priorityQueue.poll());
+//
+//            try {
+//                System.out.println(librarian.lendBookToUser(personQueue.poll(), book1,1));
+//
+//            } catch (LibraryException e){
+//                System.err.println("Book not available");
+//            }
+//        }
 
 
 
 
        // Register the Users to access the Library
-//        librarian.registerUser(seniorStudent1);
+//      librarian.registerUser(seniorStudent1);
 //       librarian.registerUser(juniorStudent1);
 //       librarian.registerUser(teacher);
 //        librarian.registerUser(juniorStudent2);

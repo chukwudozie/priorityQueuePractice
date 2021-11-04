@@ -10,6 +10,7 @@ import Services.LibrarianServices;
 import java.util.*;
 
 public class Librarian extends Person implements LibrarianServices {
+    private  static  List<String> registeredUsers = new ArrayList<>();
 
     private  static Queue<Person> personQueue = new LinkedList<>();
 
@@ -49,18 +50,18 @@ public class Librarian extends Person implements LibrarianServices {
     }
 
     @Override
-    public void registerUser(User person) {
+    public boolean registerUser(Person person) {
         if (person.getFirstName() != null) {
-
             if (!personQueue.contains(person)) {
                 personQueue.add(person);
+                return true;
             }
-
             if (!priorityQueue.contains(person)) {
                 priorityQueue.add(person);
+                return true;
             }
-
         }
+        return false;
     }
 
     @Override
@@ -70,17 +71,20 @@ public class Librarian extends Person implements LibrarianServices {
 
         }else{
             Library.getAvailableBooks().put(book.getBookTitle(), book.getNumberOfBooks());
-            return "Book "+book.getBookTitle()+ " added successfully";
+            return book.getNumberOfBooks()+" copy of "+book.getBookTitle()+ " added successfully";
         }
     }
 
 
     @Override
     public String lendBookToUser(Person person, Book book, Integer copiesOfBook) throws LibraryException {
-        if(Library.getAvailableBooks().containsKey(book.getBookTitle())){
-
+        if(Library.getAvailableBooks().containsKey(book.getBookTitle()) && copiesOfBook != 0){
             Integer copiesAvailable = Library.getAvailableBooks().get(book.getBookTitle());
             if(copiesAvailable != 0){
+//                if(registerUser(person)) {
+//                    person = personQueue.remove();
+//
+//                }
                 Map<String, Integer> borrowedBooks = new HashMap<>();
                 if(copiesOfBook < copiesAvailable){
                     borrowedBooks.put(book.getBookTitle(),copiesOfBook);
@@ -96,8 +100,8 @@ public class Librarian extends Person implements LibrarianServices {
                 }
             } else throw new LibraryException("No copy of the book in the library");
 //                return "Sorry, this book is not available at the moment "+person.getFirstName()+", come back later";
-        } else return null;
-//                "Sorry "+person.getFirstName()+ " the book, "+book.getBookTitle()+ " is not in our Library";
+        } else return
+                "Sorry "+person.getFirstName()+ " the book, "+book.getBookTitle()+ " is not in our Library";
 
     }
 

@@ -34,13 +34,13 @@ class LibrarianTest {
 
     @Test
     void lendBookToUser() {
-        Librarian checkexception = new Librarian("Me",Position.LIBRARIAN);
+        Librarian checkException = new Librarian("Me",Position.LIBRARIAN);
         Book book1 = new Book("bfj","fjfa",0);
         User user = new User("ME",Position.TEACHER);
         Library.getAvailableBooks().put(book1.getBookTitle(),book1.getNumberOfBooks());
 
         Throwable exception = assertThrows(LibraryException.class, () ->{
-            checkexception.lendBookToUser(user,book1,0);
+            checkException.lendBookToUser(user,book1,0);
         });
         assertEquals("No copy of the book in the library",exception.getMessage());
     }

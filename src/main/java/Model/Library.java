@@ -16,13 +16,9 @@ public class Library {
         return availableBooks;
     }
 
-    public static void setAvailableBooks(Map<String, Integer> availableBooks) {
-        Library.availableBooks = availableBooks;
-    }
+    public static void setAvailableBooks(Map<String, Integer> availableBooks) { Library.availableBooks = availableBooks;}
 
-    public Library(Librarian librarian) {
-        this.librarian = librarian;
-    }
+    public Library(Librarian librarian) {this.librarian = librarian;}
 
 
 }

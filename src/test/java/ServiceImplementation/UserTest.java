@@ -18,15 +18,8 @@ class UserTest {
 
     }
 
-    @org.junit.jupiter.api.Test
-    void compareTo() {
-
-        final  int  expectedOutput = 1;
-        final int actualOutput = jStudent.compareTo(teacher);
-        assertEquals(expectedOutput, actualOutput);
 
 
-    }
 
     @org.junit.jupiter.api.Test
     void requestForBook() {

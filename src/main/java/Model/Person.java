@@ -2,10 +2,7 @@ package Model;
 
 import Enums.Position;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public abstract class Person {
 
@@ -13,7 +10,7 @@ public abstract class Person {
     private String secondName;
     private Position position;
     private int priority;
-    private Map <String, Integer> booksBorrowed = new HashMap<>();
+    private Set <String> booksBorrowed = new HashSet<>();
 
 
 
@@ -69,9 +66,9 @@ public abstract class Person {
 
 //    public void setPriority(int priority) {this.priority = priority;}
 
-    public Map<String, Integer> getBooksBorrowed() { return booksBorrowed; }
+    public Set<String> getBooksBorrowed() { return booksBorrowed; }
 
-    public void setBooksBorrowed(Map<String, Integer> booksBorrowed) { this.booksBorrowed = booksBorrowed;}
+    public void setBooksBorrowed(Set<String> booksBorrowed) { this.booksBorrowed = booksBorrowed;}
 
     @Override
     public boolean equals(Object o) {
@@ -85,5 +82,11 @@ public abstract class Person {
     @Override
     public int hashCode() {
         return Objects.hash(firstName, secondName, position, priority);
+    }
+
+    @Override
+    public String toString() {
+        return  ""+firstName +  ", "+ position +
+                ", booksBorrowed=" + booksBorrowed + "\n";
     }
 }

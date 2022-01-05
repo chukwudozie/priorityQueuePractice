@@ -6,24 +6,13 @@ import Model.Library;
 import Model.Person;
 import Services.UserServices;
 
-public class User extends Person implements UserServices,Comparable<Person>{
+public class User extends Person implements UserServices{
 
 
     public User(String fName, Position position){
         super(fName,position);
     }
 
-    @Override
-    public int compareTo(Person o) {
-        return getPriority() < o.getPriority() ? 1 : -1;
-    }
-
-
-//    @Override
-//    public String returnBook(Book book, Person person) {
-//        return null;
-//    }
-//
     @Override
     public String requestForBook(Book book) {
         if(Library.getAvailableBooks().containsKey(book.getBookTitle()) && book.getNumberOfBooks() != 0){
